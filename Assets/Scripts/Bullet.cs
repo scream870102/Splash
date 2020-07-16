@@ -9,6 +9,7 @@ using UnityEngine;
 
 namespace CJStudio.Splash {
     class Bullet : MonoBehaviour {
+        protected Weapon weapon = null;
         virtual protected void FixedUpdate ( ) {
 
         }
@@ -30,14 +31,14 @@ namespace CJStudio.Splash {
 
     [System.Serializable]
     class RayAttr : HitAttr {
-        public RayAttr (Vector3 pos, Vector3 dir, int damage, float dis = Mathf.Infinity) {
+        public RayAttr (Vector3 pos, Vector3 dir, float dis = Mathf.Infinity) {
             this.pos = pos;
             this.dir = dir;
             this.dis = dis;
         }
         Vector3 pos;
         Vector3 dir;
-        float dis;
+        [SerializeField] float dis;
         public Vector3 Pos => pos;
         public Vector3 Dir => dir;
         public float Dis => dis;
@@ -45,7 +46,7 @@ namespace CJStudio.Splash {
 
     [System.Serializable]
     class SphereAttr : HitAttr {
-        public SphereAttr (Vector3 pos, Vector3 dir, float dis, float radius, int damage) {
+        public SphereAttr (Vector3 pos, Vector3 dir, float dis, float radius) {
             this.pos = pos;
             this.dir = dir;
             this.dis = dis;
@@ -53,8 +54,8 @@ namespace CJStudio.Splash {
         }
         Vector3 pos;
         Vector3 dir;
-        float dis;
-        float radius;
+        [SerializeField] float dis;
+        [SerializeField] float radius;
         public Vector3 Pos => pos;
         public Vector3 Dir => dir;
         public float Dis => dis;
@@ -62,10 +63,9 @@ namespace CJStudio.Splash {
 
     }
 
-    
     [System.Serializable]
     class BoxAttr : HitAttr {
-        public BoxAttr (Vector3 center, Vector3 halfExtents, Vector3 dir, Quaternion orientation, float dis, int damage) {
+        public BoxAttr (Vector3 center, Vector3 halfExtents, Vector3 dir, Quaternion orientation, float dis) {
             this.center = center;
             this.halfExtents = halfExtents;
             this.dir = dir;

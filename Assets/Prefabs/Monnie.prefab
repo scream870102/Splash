@@ -1498,6 +1498,36 @@ Transform:
   m_Father: {fileID: 7444806569285363970}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3208874214069899911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 515205259465092575}
+  m_Layer: 0
+  m_Name: ShootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &515205259465092575
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3208874214069899911}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -18.22, y: 1.15, z: 1.03}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3043137022268423244}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3239157158933477845
 GameObject:
   m_ObjectHideFlags: 0
@@ -3685,7 +3715,7 @@ GameObject:
   - component: {fileID: 2600063640287415796}
   m_Layer: 0
   m_Name: Monnie
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3741,11 +3771,11 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 0.7
-  m_Radius: 0.2
+  m_Radius: 0.1
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_SkinWidth: 0.02
+  m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0.35, z: 0}
 --- !u!114 &2600063640287415796
 MonoBehaviour:
@@ -3759,8 +3789,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc9dc890ff47d634dbba8def266b338d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splashTex: {fileID: 2800000, guid: fc2a638e3d9408c4e98d0ac1dbd16f7d, type: 3}
-  splashColor: {r: 0, g: 1, b: 0.8746934, a: 1}
+  speed: 3
+  rotationSpeed: 5
 --- !u!1 &7863165835357060970
 GameObject:
   m_ObjectHideFlags: 0
@@ -3984,6 +4014,30 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.14348707, y: -0.011557892, z: -0.000000014901161}
     m_Extent: {x: 0.053117275, y: 0.11494897, z: 0.130893}
   m_DirtyAABB: 0
+--- !u!114 &1048227826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8201696069203147524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c73882eaa688fa49a9ac15a0d4103a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2600063640287415796}
+  splashTex: {fileID: 2800000, guid: fc2a638e3d9408c4e98d0ac1dbd16f7d, type: 3}
+  splashColor:
+    serializedVersion: 2
+    rgba: 4294931967
+  damage: 0
+  fireRate: 2
+  bulletPrefab: {fileID: 5115417488262008286, guid: 0843664f38d514e4dbeb88e49a877415,
+    type: 3}
+  attr:
+    dis: 10
+  shootPoint: {fileID: 515205259465092575}
 --- !u!1 &8296564605847725050
 GameObject:
   m_ObjectHideFlags: 0
@@ -4778,6 +4832,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb8ecbd1ae49ba74a919337cd04780a2, type: 3}
+--- !u!1 &8201696069203147524 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1434454005163366876, guid: cb8ecbd1ae49ba74a919337cd04780a2,
+    type: 3}
+  m_PrefabInstance: {fileID: 7078096549803467480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3043137022268423244 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5188454290788851348, guid: cb8ecbd1ae49ba74a919337cd04780a2,

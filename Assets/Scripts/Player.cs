@@ -10,9 +10,6 @@ namespace CJStudio.Splash {
         Camera cam = null;
         PlayerInputAction input = null;
         CharacterController characterController = null;
-        [SerializeField] Texture2D splashTex = null;
-        Color32[ ] splashTexColor = null;
-        [SerializeField] Color splashColor = Color.clear;
         [SerializeField] float speed = 0f;
         [SerializeField] float rotationSpeed = 0f;
         void Awake ( ) {
@@ -22,38 +19,21 @@ namespace CJStudio.Splash {
             anim = GetComponent<Animator> ( );
         }
 
-        void Start ( ) {
-            InitSplashTex ( );
-        }
         void Update ( ) {
             if (moveDir.magnitude >= .1f)
                 Move ( );
         }
 
         void OnEnable ( ) {
-            input.GamePlay.Shoot.started += OnShootStarted;
             input.GamePlay.Move.performed += OnMovePerformed;
             input.GamePlay.Move.canceled += OnMoveCanceled;
             input.GamePlay.Enable ( );
         }
 
         void OnDisable ( ) {
-            input.GamePlay.Shoot.started -= OnShootStarted;
             input.GamePlay.Move.performed -= OnMovePerformed;
             input.GamePlay.Move.canceled -= OnMoveCanceled;
             input.GamePlay.Disable ( );
-        }
-
-        void OnShootStarted (InputAction.CallbackContext c) {
-            RaycastHit hit;
-            if (Physics.Raycast (cam.ViewportPointToRay (Vector3.one * .5f), out hit)) {
-                if (hit.collider.gameObject.tag != "Paintable")
-                    return;
-                PaintableObj obj = hit.collider.gameObject.GetComponent<PaintableObj> ( );
-                if (obj) {
-                    obj.Paint (hit.textureCoord, splashColor, splashTex, splashTexColor);
-                }
-            }
         }
 
         void OnMovePerformed (InputAction.CallbackContext c) {
@@ -77,10 +57,6 @@ namespace CJStudio.Splash {
             characterController.Move (move * speed * Time.deltaTime);
             float moveVel = moveDir.magnitude;
             anim.SetFloat ("Velocity", moveVel);
-        }
-
-        void InitSplashTex ( ) {
-            splashTexColor = splashTex.GetPixels32 ( );
         }
     }
 }
