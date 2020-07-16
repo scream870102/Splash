@@ -1,0 +1,33 @@
+{
+    "name": "CameraInputAction",
+    "maps": [
+        {
+            "name": "GamePlay",
+            "id": "b45cb274-705e-4e08-afa5-b04dc96cc2fc",
+            "actions": [
+                {
+                    "name": "Aim",
+                    "type": "Value",
+                    "id": "5ac6d7ff-8e25-4bf7-bed9-f9a8aac6cbed",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "face138f-fd58-4afd-835a-6e75181d10aa",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
