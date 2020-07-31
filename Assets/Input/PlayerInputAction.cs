@@ -35,6 +35,14 @@ namespace CJStudio.Splash
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Value"",
+                    ""id"": ""0910fe58-d411-4d46-8b69-d4d873c71fe9"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -81,6 +89,17 @@ namespace CJStudio.Splash
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e3fc13e3-61da-4ee8-b88c-596a8327d45f"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -91,6 +110,7 @@ namespace CJStudio.Splash
             m_GamePlay = asset.FindActionMap("GamePlay", throwIfNotFound: true);
             m_GamePlay_Shoot = m_GamePlay.FindAction("Shoot", throwIfNotFound: true);
             m_GamePlay_Move = m_GamePlay.FindAction("Move", throwIfNotFound: true);
+            m_GamePlay_Aim = m_GamePlay.FindAction("Aim", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -142,12 +162,14 @@ namespace CJStudio.Splash
         private IGamePlayActions m_GamePlayActionsCallbackInterface;
         private readonly InputAction m_GamePlay_Shoot;
         private readonly InputAction m_GamePlay_Move;
+        private readonly InputAction m_GamePlay_Aim;
         public struct GamePlayActions
         {
             private @PlayerInputAction m_Wrapper;
             public GamePlayActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
             public InputAction @Shoot => m_Wrapper.m_GamePlay_Shoot;
             public InputAction @Move => m_Wrapper.m_GamePlay_Move;
+            public InputAction @Aim => m_Wrapper.m_GamePlay_Aim;
             public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -163,6 +185,9 @@ namespace CJStudio.Splash
                     @Move.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnMove;
                     @Move.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnMove;
                     @Move.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnMove;
+                    @Aim.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnAim;
+                    @Aim.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnAim;
+                    @Aim.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnAim;
                 }
                 m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
                 if (instance != null)
@@ -173,6 +198,9 @@ namespace CJStudio.Splash
                     @Move.started += instance.OnMove;
                     @Move.performed += instance.OnMove;
                     @Move.canceled += instance.OnMove;
+                    @Aim.started += instance.OnAim;
+                    @Aim.performed += instance.OnAim;
+                    @Aim.canceled += instance.OnAim;
                 }
             }
         }
@@ -181,6 +209,7 @@ namespace CJStudio.Splash
         {
             void OnShoot(InputAction.CallbackContext context);
             void OnMove(InputAction.CallbackContext context);
+            void OnAim(InputAction.CallbackContext context);
         }
     }
 }

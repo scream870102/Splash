@@ -5,7 +5,9 @@ using UnityEngine.InputSystem;
 
 namespace CJStudio.Splash {
     class Weapon : MonoBehaviour {
-        [SerializeField] protected Player player = null;
+        Player parent = null;
+        protected Transform Crosshair => parent.Crosshair;
+        protected Player Parent => parent;
         [SerializeField] protected Texture2D splashTex = null;
         [SerializeField][ColorUsage (true, true)] protected Color32 splashColor = new Color32 ( );
         [SerializeField] protected int damage = 0;
@@ -16,10 +18,8 @@ namespace CJStudio.Splash {
         protected Camera cam = null;
         protected Color32[ ] splashTexColors = null;
         protected PlayerInputAction input = null;
-        public Camera Cam => cam;
         public Texture2D SplashTex => splashTex;
         public Color32 SplashColor => splashColor;
-        public int Damage => damage;
         public Color32[ ] SplashTexColors => splashTexColors;
 
         virtual protected void Awake ( ) {
@@ -49,6 +49,9 @@ namespace CJStudio.Splash {
         virtual protected void OnShootCanceled (InputAction.CallbackContext c) { }
         protected void InitSplashTex ( ) {
             splashTexColors = splashTex.GetPixels32 ( );
+        }
+        public void Init (Player player) {
+            this.parent = player;
         }
     }
 }

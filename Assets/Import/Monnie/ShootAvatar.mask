@@ -1,0 +1,308 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ShootAvatar
+  m_Mask: 00000000010000000100000000000000000000000100000001000000010000000100000000000000000000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Bip
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Belt-1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Belt-2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Belt-3
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip L Thigh
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip L Thigh/Bip L Calf
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip L Thigh/Bip L Calf/Bip L Foot
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip L Thigh/Bip L Calf/Bip L Foot/Bip L Toe0
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip R Thigh
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip R Thigh/Bip R Calf
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip R Thigh/Bip R Calf/Bip R Foot
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip R Thigh/Bip R Calf/Bip R Foot/Bip R Toe0
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip L Clavicle
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip L Clavicle/Bip L UpperArm
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip L Clavicle/Bip L UpperArm/Bip
+      L Forearm
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip L Clavicle/Bip L UpperArm/Bip
+      L Forearm/Bip L Hand
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip L Clavicle/Bip L UpperArm/Bip
+      L Forearm/Bip L Hand/Bip L Finger0
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip L Clavicle/Bip L UpperArm/Bip
+      L Forearm/Bip L Hand/Bip L Finger0/Bip L Finger01
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip L Clavicle/Bip L UpperArm/Bip
+      L Forearm/Bip L Hand/Bip L Finger0/Bip L Finger01/Bip L Finger02
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip L Clavicle/Bip L UpperArm/Bip
+      L Forearm/Bip L Hand/Bip L Finger1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip L Clavicle/Bip L UpperArm/Bip
+      L Forearm/Bip L Hand/Bip L Finger1/Bip L Finger11
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip L Clavicle/Bip L UpperArm/Bip
+      L Forearm/Bip L Hand/Bip L Finger1/Bip L Finger11/Bip L Finger12
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip L Clavicle/Bip L UpperArm/Bip
+      L Forearm/Bip L Hand/Bip L Finger2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip L Clavicle/Bip L UpperArm/Bip
+      L Forearm/Bip L Hand/Bip L Finger2/Bip L Finger21
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip L Clavicle/Bip L UpperArm/Bip
+      L Forearm/Bip L Hand/Bip L Finger2/Bip L Finger21/Bip L Finger22
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip L Clavicle/Bip L UpperArm/Bip
+      L Forearm/Bip L Hand/Bip L Finger3
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip L Clavicle/Bip L UpperArm/Bip
+      L Forearm/Bip L Hand/Bip L Finger3/Bip L Finger31
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip L Clavicle/Bip L UpperArm/Bip
+      L Forearm/Bip L Hand/Bip L Finger3/Bip L Finger31/Bip L Finger32
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip L Clavicle/Bip L UpperArm/Bip
+      L Forearm/Bip L Hand/Bip L Finger4
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip L Clavicle/Bip L UpperArm/Bip
+      L Forearm/Bip L Hand/Bip L Finger4/Bip L Finger41
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip L Clavicle/Bip L UpperArm/Bip
+      L Forearm/Bip L Hand/Bip L Finger4/Bip L Finger41/Bip L Finger42
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip L Clavicle/Bip L UpperArm/Bip
+      L Forearm/Bip L Hand/Phone
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Chin
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Eyelid-L
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Eyelid-R
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Fish
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-B1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-B1/Hair-B2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-BBL1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-BBL1/Hair-BBL2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-BBL1/Hair-BBL2/Hair-BBL3
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-BBR1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-BBR1/Hair-BBR2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-BBR1/Hair-BBR2/Hair-BBR3
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-BLL1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-BLL1/Hair-BLL2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-BRR1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-BRR1/Hair-BRR2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-C-BBL1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-C-BBL1/Hair-C-BBL2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-C-BBL1/Hair-C-BBL2/Hair-C-BBL3
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-C-BBR1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-C-BBR1/Hair-C-BBR2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-C-BBR1/Hair-C-BBR2/Hair-C-BBR3
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-C-BLL1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-C-BLL1/Hair-C-BLL2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-C-BLL1/Hair-C-BLL2/Hair-C-BLL3
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-C-BRR1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-C-BRR1/Hair-C-BRR2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-C-BRR1/Hair-C-BRR2/Hair-C-BRR3
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-C-L1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-C-L1/Hair-C-L2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-C-L1/Hair-C-L2/Hair-C-L3
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-C-R1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-C-R1/Hair-C-R2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-C-R1/Hair-C-R2/Hair-C-R3
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-F1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-F1/Hair-F2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-F1/Hair-F2/Hair-F3
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-FL1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-FL1/Hair-FL2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-FR1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-FR1/Hair-FR2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-L1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-L1/Hair-L2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-R1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-R1/Hair-R2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-T-BL1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-T-BL1/Hair-T-BL2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-T-BL1/Hair-T-BL2/Hair-T-BL3
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-T-BR1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-T-BR1/Hair-T-BR2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-T-BR1/Hair-T-BR2/Hair-T-BR3
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-T-FL1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-T-FL1/Hair-T-FL2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-T-FR1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-T-FR1/Hair-T-FR2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-T-L1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-T-L1/Hair-T-L2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-T-L1/Hair-T-L2/Hair-T-L3
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-T-R1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-T-R1/Hair-T-R2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Hair-Parent/Hair-T-R1/Hair-T-R2/Hair-T-R3
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Lips-B
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Lips-L
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Lips-R
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/Lips-U
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/ShopG-EyeL
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip Neck/Bip Head/ShopG-EyeR
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip R Clavicle
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip R Clavicle/Bip R UpperArm
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip R Clavicle/Bip R UpperArm/Bip
+      R Forearm
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip R Clavicle/Bip R UpperArm/Bip
+      R Forearm/Bip R Hand
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip R Clavicle/Bip R UpperArm/Bip
+      R Forearm/Bip R Hand/Bip R Finger0
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip R Clavicle/Bip R UpperArm/Bip
+      R Forearm/Bip R Hand/Bip R Finger0/Bip R Finger01
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip R Clavicle/Bip R UpperArm/Bip
+      R Forearm/Bip R Hand/Bip R Finger0/Bip R Finger01/Bip R Finger02
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip R Clavicle/Bip R UpperArm/Bip
+      R Forearm/Bip R Hand/Bip R Finger1
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip R Clavicle/Bip R UpperArm/Bip
+      R Forearm/Bip R Hand/Bip R Finger1/Bip R Finger11
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip R Clavicle/Bip R UpperArm/Bip
+      R Forearm/Bip R Hand/Bip R Finger1/Bip R Finger11/Bip R Finger12
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip R Clavicle/Bip R UpperArm/Bip
+      R Forearm/Bip R Hand/Bip R Finger2
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip R Clavicle/Bip R UpperArm/Bip
+      R Forearm/Bip R Hand/Bip R Finger2/Bip R Finger21
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip R Clavicle/Bip R UpperArm/Bip
+      R Forearm/Bip R Hand/Bip R Finger2/Bip R Finger21/Bip R Finger22
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip R Clavicle/Bip R UpperArm/Bip
+      R Forearm/Bip R Hand/Bip R Finger3
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip R Clavicle/Bip R UpperArm/Bip
+      R Forearm/Bip R Hand/Bip R Finger3/Bip R Finger31
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip R Clavicle/Bip R UpperArm/Bip
+      R Forearm/Bip R Hand/Bip R Finger3/Bip R Finger31/Bip R Finger32
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip R Clavicle/Bip R UpperArm/Bip
+      R Forearm/Bip R Hand/Bip R Finger4
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip R Clavicle/Bip R UpperArm/Bip
+      R Forearm/Bip R Hand/Bip R Finger4/Bip R Finger41
+    m_Weight: 1
+  - m_Path: Bip/Bip Pelvis/Bip Spine/Bip Spine1/Bip Spine2/Bip R Clavicle/Bip R UpperArm/Bip
+      R Forearm/Bip R Hand/Bip R Finger4/Bip R Finger41/Bip R Finger42
+    m_Weight: 1
+  - m_Path: Feet1
+    m_Weight: 1
+  - m_Path: ShopG-Body
+    m_Weight: 1
+  - m_Path: ShopG-Hair1
+    m_Weight: 1
+  - m_Path: ShopG-Hair2
+    m_Weight: 1
+  - m_Path: ShopG-Hair3
+    m_Weight: 1

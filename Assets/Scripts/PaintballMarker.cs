@@ -14,11 +14,11 @@ namespace CJStudio.Splash {
                 RaycastHit viewPortHit;
                 Vector3 viewPortPoint = Vector3.zero;
                 if (Physics.Raycast (cam.ViewportPointToRay (new Vector3 (.5f, .5f, 0f)), out viewPortHit)) {
-                    viewPortPoint = viewPortHit.point;
+                    viewPortPoint = viewPortHit.point - shootPoint.position;
                     Debug.Log (viewPortHit.collider.name);
                 }
                 SphereAttr passAttr = new SphereAttr (shootPoint.position,
-                    viewPortPoint + Vector3.up,
+                    viewPortPoint.normalized,
                     attr.Dis,
                     attr.Radius);
                 pb.Fire<SphereAttr> (passAttr, this);

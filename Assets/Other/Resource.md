@@ -7,4 +7,5 @@
 [Hero Charger](https://sketchfab.com/3d-models/splatoon-1-hero-charger-143193551c6f4c9baaa5231c3b09c5b0)  
 [Idol Splatoon Island](https://sketchfab.com/3d-models/idols-splatoon-island-b993e97a84c3444b88f30b5f405ecc2e)  
 [Ftm](https://sketchfab.com/3d-models/ftm-0970f30574d047b1976ba0aa6f2ef855)
+[AimAnimation](https://github.com/ZenXChaos/ThirdPersonShooter-AnimationSets)
 

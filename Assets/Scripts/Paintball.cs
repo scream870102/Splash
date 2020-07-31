@@ -7,15 +7,15 @@ namespace CJStudio.Splash {
         SphereAttr attr = null;
 
         override protected void FixedUpdate ( ) {
-            RaycastHit hit;
-            if (Physics.SphereCast (transform.position, attr.Radius, attr.Dir, out hit, attr.Dis)) {
-                if (hit.collider.gameObject.tag != "Paintable")
-                    return;
-                PaintableObj obj = hit.collider.GetComponent<PaintableObj> ( );
-                if (obj) {
-                    obj.Paint (hit.textureCoord, weapon.SplashColor, weapon.SplashTex, weapon.SplashTexColors);
-                }
-            }
+            // RaycastHit hit;
+            // if (Physics.SphereCast (transform.position, attr.Radius, attr.Dir, out hit, attr.Dis)) {
+            //     if (hit.collider.gameObject.tag != "Paintable")
+            //         return;
+            //     PaintableObj obj = hit.collider.GetComponent<PaintableObj> ( );
+            //     if (obj) {
+            //         obj.Paint (hit.textureCoord, weapon.SplashColor, weapon.SplashTex, weapon.SplashTexColors);
+            //     }
+            // }
         }
 
         override public void Fire<T> (T props, Weapon weapon) {
