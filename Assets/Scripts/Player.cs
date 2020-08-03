@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Cinemachine;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,6 +21,8 @@ namespace CJStudio.Splash {
         public PlayerInputAction Input { get; private set; }
         public Transform Crosshair => crosshair;
         public CinemachineFreeLook FreeCam => freeCam;
+        public EPlayerState state = EPlayerState.MOVE;
+        public EPlayerState State => state;
 
         void Awake ( ) {
             this.Camera = Camera.main;
@@ -47,36 +50,19 @@ namespace CJStudio.Splash {
             Input.GamePlay.Disable ( );
         }
 
+        public async UniTask LookAtCrosshairAsync ( ) {
+            await aim.LookAtCrosshairAsync ( );
+        }
         public void LookAtCrosshair ( ) {
-            // // Vector3 lookAt = crosshair.position;
-            // // lookAt.y = 0f;
-            // // transform.LookAt (lookAt);
-            // Vector3 lookAt = (crosshair.position - transform.position).normalized;
-            // lookAt.y = 0f;
-            // transform.rotation = Quaternion.Slerp (
-            //     transform.rotation,
-            //     Quaternion.LookRotation (lookAt),
-            //     Time.deltaTime * 10000f
-            // );
-            // //parent.rotation = Quaternion.Slerp (parent.rotation, Quaternion.LookRotation (move), Time.deltaTime * attr.RotationSpeed);
             aim.LookAtCrosshair ( );
         }
-        public void LookAtCrosshair (float duration) {
-            aim.LookAtCrosshair (duration);
-            // float elapsedTime = 0f;
-            // Vector3 lookAt = (crosshair.position - transform.position).normalized;
-            // lookAt.y = 0f;
 
-            // while (elapsedTime < duration) {
-            //     transform.rotation = Quaternion.Slerp (
-            //         transform.rotation,
-            //         Quaternion.LookRotation (lookAt),
-            //         Time.deltaTime * movementAttribute.RotationSpeed
-            //     );
-            //     await Task.Delay ((int) (Time.deltaTime * 1000));
-            //     elapsedTime += Time.deltaTime;
-            // }
-
+        /// <summary>
+        /// Call this method to change player state
+        /// </summary>
+        /// <param name="state">State to change</param>
+        public void ChangeState (EPlayerState state) {
+            this.state = state;
         }
     }
 
@@ -135,7 +121,13 @@ namespace CJStudio.Splash {
 
             Vector3 move = forward * moveDir.y + right * moveDir.x;
 
-            parent.rotation = Quaternion.Slerp (parent.rotation, Quaternion.LookRotation (move), Time.deltaTime * attr.RotationSpeed);
+            // if player is shooting don't change rotation
+            // cause player should face to the Crosshair not move direction
+            if (player.State != EPlayerState.SHOOT_START) {
+                parent.rotation = Quaternion.Slerp (parent.rotation, Quaternion.LookRotation (move), Time.deltaTime * attr.RotationSpeed);
+                player.ChangeState (EPlayerState.MOVE);
+            }
+
             characterController.Move (move * attr.Speed * Time.deltaTime);
             anim.SetFloat ("Velocity", moveDir.magnitude);
         }
@@ -169,35 +161,25 @@ namespace CJStudio.Splash {
             freeCam.m_XAxis.m_InputAxisValue = 0f;
             freeCam.m_YAxis.m_InputAxisValue = 0f;
         }
-        public async void LookAtCrosshair ( ) {
-            float elapsedTime = 0f;
+
+        public async UniTask LookAtCrosshairAsync ( ) {
             Vector3 lookAt = (player.Crosshair.position - parent.position).normalized;
             lookAt.y = 0f;
-
-            while (elapsedTime < attr.RotationDuration) {
+            Quaternion lookRotation = Quaternion.LookRotation (lookAt);
+            while (Quaternion.Angle (parent.rotation, lookRotation) > 0f) {
                 parent.rotation = Quaternion.Slerp (
                     parent.rotation,
-                    Quaternion.LookRotation (lookAt),
+                    lookRotation,
                     Time.deltaTime * attr.RotationSpeed
                 );
-                await Task.Delay ((int) (Time.deltaTime * 1000));
-                elapsedTime += Time.deltaTime;
+                await UniTask.DelayFrame (1);
             }
         }
-        public async void LookAtCrosshair (float duration) {
-            float elapsedTime = 0f;
-            Vector3 lookAt = (player.Crosshair.position - parent.position).normalized;
+        
+        public void LookAtCrosshair ( ) {
+            Vector3 lookAt = player.Crosshair.position;
             lookAt.y = 0f;
-
-            while (elapsedTime < duration) {
-                parent.rotation = Quaternion.Slerp (
-                    parent.rotation,
-                    Quaternion.LookRotation (lookAt),
-                    Time.deltaTime * attr.RotationSpeed
-                );
-                await Task.Delay ((int) (Time.deltaTime * 1000));
-                elapsedTime += Time.deltaTime;
-            }
+            parent.LookAt (lookAt);
         }
     }
 
@@ -212,8 +194,13 @@ namespace CJStudio.Splash {
     [System.Serializable]
     class AimAttribute {
         [SerializeField] float rotationSpeed = 20f;
-        [SerializeField] float rotationDuration = .1f;
         public float RotationSpeed => rotationSpeed;
-        public float RotationDuration => rotationDuration;
+    }
+
+    [System.Serializable]
+    enum EPlayerState {
+        MOVE,
+        SHOOT_START,
+        SHOOT_END,
     }
 }

@@ -3798,8 +3798,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementAttribute:
-    Speed: 3
-    RotationSpeed: 5
+    speed: 3
+    rotationSpeed: 5
+  aimAttribute:
+    rotationSpeed: 20
+    rotationDuration: 0.1
   crosshair: {fileID: 0}
   weapon: {fileID: 1048227826}
   freeCam: {fileID: 0}
@@ -4044,7 +4047,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294931967
   damage: 0
-  fireRate: 2
+  fireRate: 0.5
   bulletPrefab: {fileID: 5115417488262008286, guid: 0843664f38d514e4dbeb88e49a877415,
     type: 3}
   shootPoint: {fileID: 515205259465092575}

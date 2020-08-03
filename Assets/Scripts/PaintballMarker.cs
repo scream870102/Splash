@@ -7,17 +7,17 @@ namespace CJStudio.Splash {
         [SerializeField] float forceAmount = 10f;
         public float ForceAmount => forceAmount;
         override protected void OnShootStarted (InputAction.CallbackContext c) {
-            if (timer.IsFinished) {
-                timer.Reset ( );
-                GameObject o = Instantiate (bulletPrefab);
+            if (Timer.IsFinished) {
+                Timer.Reset ( );
+                GameObject o = Instantiate (BulletPrefab);
                 Paintball pb = o.GetComponent<Paintball> ( );
                 RaycastHit viewPortHit;
                 Vector3 viewPortPoint = Vector3.zero;
-                if (Physics.Raycast (cam.ViewportPointToRay (new Vector3 (.5f, .5f, 0f)), out viewPortHit)) {
-                    viewPortPoint = viewPortHit.point - shootPoint.position;
+                if (Physics.Raycast (Cam.ViewportPointToRay (new Vector3 (.5f, .5f, 0f)), out viewPortHit)) {
+                    viewPortPoint = viewPortHit.point - ShootPoint.position;
                     Debug.Log (viewPortHit.collider.name);
                 }
-                SphereAttr passAttr = new SphereAttr (shootPoint.position,
+                SphereAttr passAttr = new SphereAttr (ShootPoint.position,
                     viewPortPoint.normalized,
                     attr.Dis,
                     attr.Radius);

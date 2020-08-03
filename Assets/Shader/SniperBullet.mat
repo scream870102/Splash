@@ -20,6 +20,9 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs: []
-    m_Floats: []
+    m_Floats:
+    - Intensity: 0
     m_Colors:
+    - Bullet_Color: {r: 0.24402116, g: 2.839519, b: 3.8599713, a: 1}
     - Color_53B85E85: {r: 0.28235295, g: 4.392157, b: 5.992157, a: 1}
+  m_BuildTextureStacks: []

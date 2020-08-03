@@ -298,8 +298,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 65308887}
-  m_LocalRotation: {x: 0.032190334, y: -0.13227877, z: 0.0042981547, w: 0.9906804}
-  m_LocalPosition: {x: 0, y: 0, z: 0.00000011920929}
+  m_LocalRotation: {x: 0.03219036, y: -0.13227879, z: 0.0042981524, w: 0.99068046}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00000011920929}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 699118700}
@@ -372,8 +372,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 221174484}
-  m_LocalRotation: {x: 0.26023674, y: -0.12770574, z: 0.034747634, w: 0.95643127}
-  m_LocalPosition: {x: -0.14836681, y: 0.890849, z: 0.35657573}
+  m_LocalRotation: {x: 0.17891589, y: -0.1301747, z: 0.023889419, w: 0.97492206}
+  m_LocalPosition: {x: -0.06859791, y: 0.599293, z: 0.16486406}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1493578906}
@@ -663,7 +663,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 725059250}
-  m_LocalRotation: {x: 0.032190338, y: -0.13227877, z: 0.0042981557, w: 0.9906804}
+  m_LocalRotation: {x: 0.03219036, y: -0.13227877, z: 0.0042981524, w: 0.9906804}
   m_LocalPosition: {x: 0.76831985, y: 0.5, z: -1.8465332}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -822,7 +822,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 868165294}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1380,8 +1380,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1683730404}
-  m_LocalRotation: {x: 0.032190334, y: -0.13227877, z: 0.0042981547, w: 0.9906804}
-  m_LocalPosition: {x: 0, y: 0, z: 0.00000011920929}
+  m_LocalRotation: {x: 0.03219036, y: -0.13227879, z: 0.0042981524, w: 0.99068046}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00000011920929}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 991484478}
@@ -1919,6 +1919,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1048227826, guid: 20a737155d0b5c04f9dacf8c737edb77, type: 3}
+      propertyPath: splashColor.rgba
+      value: 4290400996
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048227826, guid: 20a737155d0b5c04f9dacf8c737edb77, type: 3}
+      propertyPath: intensity
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048227826, guid: 20a737155d0b5c04f9dacf8c737edb77, type: 3}
+      propertyPath: fireRate
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2600063640287415796, guid: 20a737155d0b5c04f9dacf8c737edb77,
         type: 3}
       propertyPath: crosshair
@@ -1932,12 +1944,12 @@ PrefabInstance:
     - target: {fileID: 2600063640287415796, guid: 20a737155d0b5c04f9dacf8c737edb77,
         type: 3}
       propertyPath: aimAttribute.rotationDuration
-      value: 0.1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2600063640287415796, guid: 20a737155d0b5c04f9dacf8c737edb77,
         type: 3}
       propertyPath: aimAttribute.rotationSpeed
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7444806569285363970, guid: 20a737155d0b5c04f9dacf8c737edb77,
         type: 3}

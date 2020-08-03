@@ -5,22 +5,29 @@ using UnityEngine.InputSystem;
 
 namespace CJStudio.Splash {
     class Weapon : MonoBehaviour {
-        Player parent = null;
-        protected Transform Crosshair => parent.Crosshair;
-        protected Player Parent => parent;
-        [SerializeField] protected Texture2D splashTex = null;
-        [SerializeField][ColorUsage (true, true)] protected Color32 splashColor = new Color32 ( );
-        [SerializeField] protected int damage = 0;
-        [SerializeField] protected float fireRate = 0f;
+        [SerializeField] Texture2D splashTex = null;
+        [SerializeField] Color32 splashColor = new Color32 ( );
+        [SerializeField][Range (0f, 10f)] float intensity = 0f;
+        [SerializeField] int damage = 0;
+        [SerializeField] float fireRate = 0f;
         [SerializeField] protected GameObject bulletPrefab = null;
         [SerializeField] protected Transform shootPoint = null;
-        protected ScaledTimer timer = null;
-        protected Camera cam = null;
-        protected Color32[ ] splashTexColors = null;
-        protected PlayerInputAction input = null;
+        Player parent = null;
+        ScaledTimer timer = null;
+        Camera cam = null;
+        Color32[ ] splashTexColors = null;
+        PlayerInputAction input = null;
+        protected Player Parent => parent;
+        protected Transform Crosshair => parent.Crosshair;
+        protected int Damage => damage;
+        protected GameObject BulletPrefab => bulletPrefab;
+        protected Transform ShootPoint => shootPoint;
+        protected ScaledTimer Timer => timer;
+        protected Camera Cam => cam;
+        public Color32[ ] SplashTexColors => splashTexColors;
+        public float Intensity => intensity;
         public Texture2D SplashTex => splashTex;
         public Color32 SplashColor => splashColor;
-        public Color32[ ] SplashTexColors => splashTexColors;
 
         virtual protected void Awake ( ) {
             input = new PlayerInputAction ( );

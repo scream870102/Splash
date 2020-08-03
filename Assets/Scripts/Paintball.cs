@@ -6,7 +6,7 @@ namespace CJStudio.Splash {
         [SerializeField] Rigidbody rb = null;
         SphereAttr attr = null;
 
-        override protected void FixedUpdate ( ) {
+        void FixedUpdate ( ) {
             // RaycastHit hit;
             // if (Physics.SphereCast (transform.position, attr.Radius, attr.Dir, out hit, attr.Dis)) {
             //     if (hit.collider.gameObject.tag != "Paintable")
@@ -20,7 +20,6 @@ namespace CJStudio.Splash {
 
         override public void Fire<T> (T props, Weapon weapon) {
             attr = props as SphereAttr;
-            this.weapon = weapon;
             transform.position = attr.Pos;
             rb.AddForce (attr.Dir * (weapon as PaintballMarker).ForceAmount, ForceMode.Impulse);
 

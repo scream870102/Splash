@@ -16,7 +16,7 @@ namespace CJStudio.Splash {
             paintTex = new Texture2D (mainTex.width, mainTex.height);
             Color[ ] cols = paintTex.GetPixels ( );
             for (int i = 0; i < cols.Length; i++) {
-                cols[i] = Color.black;
+                cols[i] = Color.clear;
             }
             paintTex.SetPixels (cols);
             paintTex.Apply ( );

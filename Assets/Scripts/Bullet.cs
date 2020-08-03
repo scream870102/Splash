@@ -9,11 +9,6 @@ using UnityEngine;
 
 namespace CJStudio.Splash {
     class Bullet : MonoBehaviour {
-        protected Weapon weapon = null;
-        virtual protected void FixedUpdate ( ) {
-
-        }
-
         /// <summary>
         /// Overwrite this method to define how bullet detect PaintableObj
         /// </summary>
@@ -26,8 +21,7 @@ namespace CJStudio.Splash {
 
     }
 
-    [System.Serializable]
-    class HitAttr { }
+    abstract class HitAttr { }
 
     [System.Serializable]
     class RayAttr : HitAttr {
