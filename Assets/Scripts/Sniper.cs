@@ -13,7 +13,7 @@ namespace CJStudio.Splash {
 
         void Update ( ) {
             // if player keep pressing shoot button keep update trajectory and keep player face to crosshair
-            if (bShootPerformed && hs != null) {
+            if (bShootPerformed && hs) {
                 Parent.LookAtCrosshair ( );
                 RayAttr passAttr = new RayAttr (ShootPoint.position,
                     (Crosshair.position - ShootPoint.position).normalized, attr.Dis);
@@ -26,8 +26,7 @@ namespace CJStudio.Splash {
             if (Timer.IsFinished && !bShootPerformed) {
                 Parent.ChangeState (EPlayerState.SHOOT_START);
                 await Parent.LookAtCrosshairAsync ( );
-                GameObject o = LeanPool.Spawn (BulletPrefab);
-                hs = o.GetComponent<Hitscan> ( );
+                hs = LeanPool.Spawn (BulletPrefab).GetComponent<Hitscan> ( );
                 RayAttr passAttr = new RayAttr (ShootPoint.position,
                     (Crosshair.position - ShootPoint.position).normalized, attr.Dis);
                 hs.UpdateTrajectory (passAttr, this);

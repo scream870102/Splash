@@ -10,29 +10,28 @@ namespace CJStudio.Splash {
         [SerializeField][Range (0f, 10f)] float intensity = 0f;
         [SerializeField] int damage = 0;
         [SerializeField] float fireRate = 0f;
+        [SerializeField] float capacity = 100f;
+        [SerializeField] float consumption = 0f;
         [SerializeField] GameObject bulletPrefab = null;
         [SerializeField] Transform shootPoint = null;
-        Player parent = null;
-        ScaledTimer timer = null;
-        Camera cam = null;
-        Dictionary<int, Color32[ ]> splashTexColors = null;
         PlayerInputAction input = null;
-        protected Player Parent => parent;
-        protected Transform Crosshair => parent.Crosshair;
+        protected float Capacity => capacity;
+        protected Transform Crosshair => Parent.Crosshair;
         protected int Damage => damage;
         protected GameObject BulletPrefab => bulletPrefab;
         protected Transform ShootPoint => shootPoint;
-        protected ScaledTimer Timer => timer;
-        protected Camera Cam => cam;
-        public Dictionary<int, Color32[ ]> SplashTexColors => splashTexColors;
         public float Intensity => intensity;
         public Texture2D[ ] SplashTex => splashTex;
         public Color32 SplashColor => splashColor;
+        protected Player Parent { get; private set; } = null;
+        protected ScaledTimer Timer { get; private set; } = null;
+        protected Camera Cam { get; private set; } = null;
+        public Dictionary<int, Color32[ ]> SplashTexColors { get; private set; } = null;
 
         virtual protected void Awake ( ) {
             input = new PlayerInputAction ( );
-            timer = new ScaledTimer (fireRate);
-            cam = Camera.main;
+            Timer = new ScaledTimer (fireRate);
+            Cam = Camera.main;
         }
 
         virtual protected void Start ( ) {
@@ -56,16 +55,23 @@ namespace CJStudio.Splash {
         virtual protected void OnShootCanceled (InputAction.CallbackContext c) { }
 
         void InitSplashTex ( ) {
-            splashTexColors = new Dictionary<int, Color32[ ]> ( );
+            SplashTexColors = new Dictionary<int, Color32[ ]> ( );
             for (int i = 0; i < splashTex.Length; i++)
-                splashTexColors.Add (i, splashTex[i].GetPixels32 ( ));
+                SplashTexColors.Add (i, splashTex[i].GetPixels32 ( ));
         }
         public void Init (Player player) {
-            this.parent = player;
+            this.Parent = player;
         }
 
         public int GetRandomSplashTexIndex ( ) {
             return Random.Range (0, SplashTex.Length);
+        }
+
+        public float ConsumeInk ( ) {
+            capacity -= consumption;
+            if (capacity < 0f)
+                capacity = 0f;
+            return capacity;
         }
     }
 }

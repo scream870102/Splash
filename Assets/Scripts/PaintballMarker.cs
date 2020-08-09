@@ -27,10 +27,6 @@ namespace CJStudio.Splash {
             }
         }
 
-        override protected void OnShootPerformed (InputAction.CallbackContext c) {
-
-        }
-
         override protected void OnShootCanceled (InputAction.CallbackContext c) {
             bShootPerformed = false;
             Parent.ChangeState (EPlayerState.SHOOT_END);

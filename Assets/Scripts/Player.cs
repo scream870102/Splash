@@ -15,14 +15,13 @@ namespace CJStudio.Splash {
         Movement movement = null;
         Aim aim = null;
         Weapon weapon = null;
-        public Camera Camera { get; private set; }
-        public CharacterController CharacterController { get; private set; }
-        public Animator Animator { get; private set; }
-        public PlayerInputAction Input { get; private set; }
+        public Camera Camera { get; private set; } = null;
+        public CharacterController CharacterController { get; private set; } = null;
+        public Animator Animator { get; private set; } = null;
+        public PlayerInputAction Input { get; private set; } = null;
+        public EPlayerState State { get; private set; } = EPlayerState.MOVE;
         public Transform Crosshair => crosshair;
         public CinemachineFreeLook FreeCam => freeCam;
-        public EPlayerState state = EPlayerState.MOVE;
-        public EPlayerState State => state;
 
         void Awake ( ) {
             this.Camera = Camera.main;
@@ -30,10 +29,7 @@ namespace CJStudio.Splash {
             this.Animator = GetComponent<Animator> ( );
             this.Input = new PlayerInputAction ( );
             this.weapon = GetComponentInChildren<Weapon> ( );
-            if (!weapon)
-                Debug.LogError ("Can't find the weapon on this player");
-            else
-                weapon.Init (this);
+            weapon?.Init (this);
         }
 
         void Start ( ) {
@@ -66,7 +62,7 @@ namespace CJStudio.Splash {
         /// </summary>
         /// <param name="state">State to change</param>
         public void ChangeState (EPlayerState state) {
-            this.state = state;
+            this.State = state;
         }
     }
 
