@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using Lean.Pool;
 using UnityEngine;
-
 namespace CJStudio.Splash {
     /// <summary>
     /// Hitscan will show trajectory before player release shoot button
@@ -16,6 +16,7 @@ namespace CJStudio.Splash {
         /// <param name="weapon">which weapon does this bullet belongs to</param>
         /// <typeparam name="T">type of props inherited from HitAttr</typeparam>
         override public void Fire<T> (T props, Weapon weapon) {
+            this.Weapon = weapon;
             RayAttr rayProps = props as RayAttr;
             UpdateTrajectory (rayProps, weapon);
             RaycastHit hit;
@@ -24,10 +25,11 @@ namespace CJStudio.Splash {
                     return;
                 PaintableObj obj = hit.collider.GetComponent<PaintableObj> ( );
                 if (obj) {
-                    obj.Paint (hit.textureCoord, weapon.SplashColor, weapon.SplashTex, weapon.SplashTexColors);
+                    int index = Weapon.GetRandomSplashTexIndex ( );
+                    obj.Paint (hit.textureCoord, Weapon.SplashColor, Weapon.SplashTex[index], Weapon.SplashTexColors[index]);
                 }
             }
-            Destroy (this.gameObject);
+            LeanPool.Despawn (this.gameObject);
         }
 
         /// <summary>
@@ -36,13 +38,14 @@ namespace CJStudio.Splash {
         /// <param name="props">Props for trajectory</param>
         /// <param name="weapon">Which weapon should this bullet belongs to</param>
         public void UpdateTrajectory (RayAttr props, Weapon weapon) {
+            this.Weapon = weapon;
             Vector3 scale = transform.localScale;
             scale.z = props.Dis;
             transform.localScale = scale;
             transform.position = props.Pos;
             transform.rotation = Quaternion.LookRotation (props.Dir);
-            rend.material.SetColor ("Bullet_Color", weapon.SplashColor);
-            rend.material.SetFloat ("Intensity", weapon.Intensity);
+            rend.material.SetColor ("Bullet_Color", Weapon.SplashColor);
+            rend.material.SetFloat ("Intensity", Weapon.Intensity);
         }
     }
 }

@@ -3801,11 +3801,10 @@ MonoBehaviour:
     speed: 3
     rotationSpeed: 5
   aimAttribute:
-    rotationSpeed: 20
-    rotationDuration: 0.1
+    rotationSpeed: 50
   crosshair: {fileID: 0}
-  weapon: {fileID: 1048227826}
   freeCam: {fileID: 0}
+  state: 0
 --- !u!1 &7863165835357060970
 GameObject:
   m_ObjectHideFlags: 0
@@ -4030,7 +4029,7 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.14348707, y: -0.011557892, z: -0.000000014901161}
     m_Extent: {x: 0.053117275, y: 0.11494897, z: 0.130893}
   m_DirtyAABB: 0
---- !u!114 &1048227826
+--- !u!114 &638589332
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4042,17 +4041,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c73882eaa688fa49a9ac15a0d4103a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splashTex: {fileID: 2800000, guid: fc2a638e3d9408c4e98d0ac1dbd16f7d, type: 3}
+  splashTex:
+  - {fileID: 2800000, guid: fc2a638e3d9408c4e98d0ac1dbd16f7d, type: 3}
+  - {fileID: 2800000, guid: 9825e0bf6cec10a4584b6827a44cae33, type: 3}
   splashColor:
     serializedVersion: 2
-    rgba: 4294931967
+    rgba: 4294049536
+  intensity: 2
   damage: 0
-  fireRate: 0.5
+  fireRate: 0.1
   bulletPrefab: {fileID: 5115417488262008286, guid: 0843664f38d514e4dbeb88e49a877415,
     type: 3}
   shootPoint: {fileID: 515205259465092575}
   attr:
-    dis: 10
+    dis: 3
 --- !u!1 &8296564605847725050
 GameObject:
   m_ObjectHideFlags: 0

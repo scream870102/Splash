@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using Eccentric.Utils;
 using UnityEngine;
-
 // Maybe we should have a collider to keep check if the bullet hit something
 // We now have mop,sniper and paintball marker
 // - sniper use raycast 
@@ -9,6 +9,7 @@ using UnityEngine;
 
 namespace CJStudio.Splash {
     class Bullet : MonoBehaviour {
+        protected Weapon Weapon { get; set; }
         /// <summary>
         /// Overwrite this method to define how bullet detect PaintableObj
         /// </summary>
@@ -40,20 +41,18 @@ namespace CJStudio.Splash {
 
     [System.Serializable]
     class SphereAttr : HitAttr {
-        public SphereAttr (Vector3 pos, Vector3 dir, float dis, float radius) {
+        public SphereAttr (Vector3 pos, float length, Vector3 dir) {
             this.pos = pos;
+            this.length = length;
             this.dir = dir;
-            this.dis = dis;
-            this.radius = radius;
         }
-        Vector3 pos;
+
+        [SerializeField] float length;
         Vector3 dir;
-        [SerializeField] float dis;
-        [SerializeField] float radius;
+        Vector3 pos;
+        public float Length => length;
         public Vector3 Pos => pos;
         public Vector3 Dir => dir;
-        public float Dis => dis;
-        public float Radius => radius;
 
     }
 

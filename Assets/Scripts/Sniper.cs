@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Lean.Pool;
 using UnityEngine;
 using UnityEngine.InputSystem;
 namespace CJStudio.Splash {
@@ -25,7 +26,7 @@ namespace CJStudio.Splash {
             if (Timer.IsFinished && !bShootPerformed) {
                 Parent.ChangeState (EPlayerState.SHOOT_START);
                 await Parent.LookAtCrosshairAsync ( );
-                GameObject o = Instantiate (BulletPrefab);
+                GameObject o = LeanPool.Spawn (BulletPrefab);
                 hs = o.GetComponent<Hitscan> ( );
                 RayAttr passAttr = new RayAttr (ShootPoint.position,
                     (Crosshair.position - ShootPoint.position).normalized, attr.Dis);

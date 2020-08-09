@@ -1,7 +1,3 @@
 # Temp
-
-
-Maybe just use sphereCast or raycast to detect how splash
-
-
-Maybe try to use collider and use
+- 處理墨水補充的問題
+- 分數計算的問題

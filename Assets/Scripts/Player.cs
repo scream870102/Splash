@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Cinemachine;
 using Cysharp.Threading.Tasks;
+using Lean.Pool;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
 namespace CJStudio.Splash {
     class Player : MonoBehaviour {
         [SerializeField] MovementAttribute movementAttribute = null;
         [SerializeField] AimAttribute aimAttribute = null;
         [SerializeField] Transform crosshair = null;
-        [SerializeField] Weapon weapon = null;
         [SerializeField] CinemachineFreeLook freeCam = null;
         Movement movement = null;
         Aim aim = null;
+        Weapon weapon = null;
         public Camera Camera { get; private set; }
         public CharacterController CharacterController { get; private set; }
         public Animator Animator { get; private set; }
@@ -29,7 +29,11 @@ namespace CJStudio.Splash {
             this.CharacterController = GetComponent<CharacterController> ( );
             this.Animator = GetComponent<Animator> ( );
             this.Input = new PlayerInputAction ( );
-            weapon.Init (this);
+            this.weapon = GetComponentInChildren<Weapon> ( );
+            if (!weapon)
+                Debug.LogError ("Can't find the weapon on this player");
+            else
+                weapon.Init (this);
         }
 
         void Start ( ) {
@@ -175,7 +179,7 @@ namespace CJStudio.Splash {
                 await UniTask.DelayFrame (1);
             }
         }
-        
+
         public void LookAtCrosshair ( ) {
             Vector3 lookAt = player.Crosshair.position;
             lookAt.y = 0f;
