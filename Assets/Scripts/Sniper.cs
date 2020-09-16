@@ -1,6 +1,3 @@
-using System;
-using System.Threading;
-using Cysharp.Threading.Tasks;
 using Lean.Pool;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -21,10 +18,10 @@ namespace CJStudio.Splash {
             }
         }
 
-        override protected async void OnShootStarted (InputAction.CallbackContext c) {
+        override protected async void HandleShootStarted (InputAction.CallbackContext c) {
             // if player can shoot face to Crosshair first and spawn trajectory and bullet 
             if (Timer.IsFinished && !bShootPerformed) {
-                Parent.ChangeState (EPlayerState.SHOOT_START);
+                Parent.ChangeState (EHumanoidState.SHOOT_START);
                 await Parent.LookAtCrosshairAsync ( );
                 hs = LeanPool.Spawn (BulletPrefab).GetComponent<Hitscan> ( );
                 RayAttr passAttr = new RayAttr (ShootPoint.position,
@@ -34,7 +31,7 @@ namespace CJStudio.Splash {
             }
         }
 
-        override protected void OnShootCanceled (InputAction.CallbackContext c) {
+        override protected void HandleShootCanceled (InputAction.CallbackContext c) {
             // if player released shoot button and have shot bullet before update the bullet
             if (bShootPerformed && Timer.IsFinished) {
                 bShootPerformed = false;
@@ -43,7 +40,7 @@ namespace CJStudio.Splash {
                 RayAttr passAttr = new RayAttr (ShootPoint.position,
                     (Crosshair.position - ShootPoint.position).normalized, attr.Dis);
                 hs.Fire<RayAttr> (passAttr, this);
-                Parent.ChangeState (EPlayerState.SHOOT_END);
+                Parent.ChangeState (EHumanoidState.SHOOT_END);
                 hs = null;
             }
         }

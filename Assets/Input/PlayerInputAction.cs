@@ -26,7 +26,7 @@ namespace CJStudio.Splash
                     ""id"": ""b99465c1-fb18-4595-a1e8-9b99b8afff4b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press(behavior=2)""
                 },
                 {
                     ""name"": ""Move"",
@@ -41,6 +41,14 @@ namespace CJStudio.Splash
                     ""type"": ""Value"",
                     ""id"": ""0910fe58-d411-4d46-8b69-d4d873c71fe9"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Transform"",
+                    ""type"": ""Button"",
+                    ""id"": ""b5842cc1-7a02-4cb3-879c-2f06c3bc5498"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -70,6 +78,17 @@ namespace CJStudio.Splash
                 },
                 {
                     ""name"": """",
+                    ""id"": ""a1c175af-09a6-49b4-9ded-41adc1c60a26"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""b6edfd06-97b7-42a5-b247-9e2fa2e8d80e"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
@@ -89,6 +108,28 @@ namespace CJStudio.Splash
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d425cb2b-73b9-413f-83d6-c5ec29b8c45d"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Transform"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d408681b-e51d-45f0-8cb6-19bfe70cb9aa"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Transform"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -100,6 +141,7 @@ namespace CJStudio.Splash
             m_GamePlay_Shoot = m_GamePlay.FindAction("Shoot", throwIfNotFound: true);
             m_GamePlay_Move = m_GamePlay.FindAction("Move", throwIfNotFound: true);
             m_GamePlay_Aim = m_GamePlay.FindAction("Aim", throwIfNotFound: true);
+            m_GamePlay_Transform = m_GamePlay.FindAction("Transform", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -152,6 +194,7 @@ namespace CJStudio.Splash
         private readonly InputAction m_GamePlay_Shoot;
         private readonly InputAction m_GamePlay_Move;
         private readonly InputAction m_GamePlay_Aim;
+        private readonly InputAction m_GamePlay_Transform;
         public struct GamePlayActions
         {
             private @PlayerInputAction m_Wrapper;
@@ -159,6 +202,7 @@ namespace CJStudio.Splash
             public InputAction @Shoot => m_Wrapper.m_GamePlay_Shoot;
             public InputAction @Move => m_Wrapper.m_GamePlay_Move;
             public InputAction @Aim => m_Wrapper.m_GamePlay_Aim;
+            public InputAction @Transform => m_Wrapper.m_GamePlay_Transform;
             public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -177,6 +221,9 @@ namespace CJStudio.Splash
                     @Aim.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnAim;
                     @Aim.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnAim;
                     @Aim.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnAim;
+                    @Transform.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnTransform;
+                    @Transform.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnTransform;
+                    @Transform.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnTransform;
                 }
                 m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
                 if (instance != null)
@@ -190,6 +237,9 @@ namespace CJStudio.Splash
                     @Aim.started += instance.OnAim;
                     @Aim.performed += instance.OnAim;
                     @Aim.canceled += instance.OnAim;
+                    @Transform.started += instance.OnTransform;
+                    @Transform.performed += instance.OnTransform;
+                    @Transform.canceled += instance.OnTransform;
                 }
             }
         }
@@ -199,6 +249,7 @@ namespace CJStudio.Splash
             void OnShoot(InputAction.CallbackContext context);
             void OnMove(InputAction.CallbackContext context);
             void OnAim(InputAction.CallbackContext context);
+            void OnTransform(InputAction.CallbackContext context);
         }
     }
 }

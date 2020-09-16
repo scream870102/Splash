@@ -23,7 +23,7 @@ namespace CJStudio.Splash {
         public float Intensity => intensity;
         public Texture2D[ ] SplashTex => splashTex;
         public Color32 SplashColor => splashColor;
-        protected Player Parent { get; private set; } = null;
+        protected Humanoid Parent { get; private set; } = null;
         protected ScaledTimer Timer { get; private set; } = null;
         protected Camera Cam { get; private set; } = null;
         public Dictionary<int, Color32[ ]> SplashTexColors { get; private set; } = null;
@@ -39,27 +39,27 @@ namespace CJStudio.Splash {
         }
 
         virtual protected void OnEnable ( ) {
-            input.GamePlay.Shoot.started += OnShootStarted;
-            input.GamePlay.Shoot.performed += OnShootPerformed;
-            input.GamePlay.Shoot.canceled += OnShootCanceled;
+            input.GamePlay.Shoot.started += HandleShootStarted;
+            input.GamePlay.Shoot.performed += HandleShootPerformed;
+            input.GamePlay.Shoot.canceled += HandleShootCanceled;
             input.GamePlay.Enable ( );
         }
         virtual protected void OnDisable ( ) {
-            input.GamePlay.Shoot.started -= OnShootStarted;
-            input.GamePlay.Shoot.performed -= OnShootPerformed;
-            input.GamePlay.Shoot.canceled -= OnShootCanceled;
+            input.GamePlay.Shoot.started -= HandleShootStarted;
+            input.GamePlay.Shoot.performed -= HandleShootPerformed;
+            input.GamePlay.Shoot.canceled -= HandleShootCanceled;
         }
 
-        virtual protected void OnShootStarted (InputAction.CallbackContext c) { }
-        virtual protected void OnShootPerformed (InputAction.CallbackContext c) { }
-        virtual protected void OnShootCanceled (InputAction.CallbackContext c) { }
+        virtual protected void HandleShootStarted (InputAction.CallbackContext c) { }
+        virtual protected void HandleShootPerformed (InputAction.CallbackContext c) { }
+        virtual protected void HandleShootCanceled (InputAction.CallbackContext c) { }
 
         void InitSplashTex ( ) {
             SplashTexColors = new Dictionary<int, Color32[ ]> ( );
             for (int i = 0; i < splashTex.Length; i++)
                 SplashTexColors.Add (i, splashTex[i].GetPixels32 ( ));
         }
-        public void Init (Player player) {
+        public void Init (Humanoid player) {
             this.Parent = player;
         }
 

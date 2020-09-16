@@ -1,7 +1,6 @@
-using System.Collections;
+using Lean.Pool;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Lean.Pool;
 namespace CJStudio.Splash {
     class PaintballMarker : Weapon {
         [SerializeField] SphereAttr attr = null;
@@ -12,24 +11,26 @@ namespace CJStudio.Splash {
             if (bShootPerformed && Timer.IsFinished) {
                 Parent.LookAtCrosshair ( );
                 Timer.Reset ( );
-                GameObject o = LeanPool.Spawn(BulletPrefab);
+                GameObject o = LeanPool.Spawn (BulletPrefab);
                 Paintball pb = o.GetComponent<Paintball> ( );
                 SphereAttr passAttr = new SphereAttr (ShootPoint.position, attr.Length, (Crosshair.position - ShootPoint.position).normalized);
                 pb.Fire<SphereAttr> (passAttr, this);
             }
         }
 
-        override protected async void OnShootStarted (InputAction.CallbackContext c) {
-            if (Timer.IsFinished && !bShootPerformed && Parent.State != EPlayerState.SHOOT_START) {
-                Parent.ChangeState (EPlayerState.SHOOT_START);
+        override protected async void HandleShootStarted (InputAction.CallbackContext c) {
+            if (Timer.IsFinished && !bShootPerformed && Parent.State != EHumanoidState.SHOOT_START) {
+                Parent.ChangeState (EHumanoidState.SHOOT_START);
                 await Parent.LookAtCrosshairAsync ( );
                 bShootPerformed = true;
             }
         }
 
-        override protected void OnShootCanceled (InputAction.CallbackContext c) {
-            bShootPerformed = false;
-            Parent.ChangeState (EPlayerState.SHOOT_END);
+        override protected void HandleShootCanceled (InputAction.CallbackContext c) {
+            if (bShootPerformed) {
+                bShootPerformed = false;
+                Parent.ChangeState (EHumanoidState.SHOOT_END);
+            }
         }
     }
 }

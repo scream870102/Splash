@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using Eccentric.Utils;
 using UnityEngine;
 // Maybe we should have a collider to keep check if the bullet hit something
 // We now have mop,sniper and paintball marker

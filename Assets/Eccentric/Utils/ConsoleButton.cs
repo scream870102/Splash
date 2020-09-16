@@ -84,7 +84,7 @@ namespace Eccentric.Utils {
 
     [System.Serializable]
     class Button {
-        public Text Text;
-        public UnityEvent Action;
+        public Text Text = null;
+        public UnityEvent Action = null;
     }
 }

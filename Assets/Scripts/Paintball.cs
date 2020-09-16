@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Lean.Pool;
 using UnityEngine;
 namespace CJStudio.Splash {
