@@ -1,7 +1,7 @@
 using Eccentric;
 using UnityEngine;
 namespace CJStudio.Splash {
-    class PlayerComponent : MonoBehaviour {
+    class Character : MonoBehaviour {
         public Player Player { get; private set; } = null;
         protected virtual void OnEnable ( ) {
             DomainEvents.Register<OnStateChanged> (HandleStateChanged);

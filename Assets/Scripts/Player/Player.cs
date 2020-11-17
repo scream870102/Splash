@@ -1,4 +1,5 @@
-﻿using Eccentric;
+﻿using Cinemachine;
+using Eccentric;
 using UnityEngine;
 using UnityEngine.InputSystem;
 namespace CJStudio.Splash {
@@ -7,6 +8,10 @@ namespace CJStudio.Splash {
         public PlayerInputAction Input { get; private set; } = null;
         [SerializeField] Humanoid humanoid = null;
         [SerializeField] Squid squid = null;
+        [SerializeField] CinemachineFreeLook humanoidCam = null;
+        [SerializeField] CinemachineFreeLook squidCam = null;
+        public CinemachineFreeLook HumanoidCam => humanoidCam;
+        public CinemachineFreeLook SquidCam => squidCam;
         void Awake ( ) {
             humanoid?.Init (this);
             squid?.Init (this);
@@ -15,10 +20,13 @@ namespace CJStudio.Splash {
 
         void Start ( ) => ToggleState (EPlayerState.HUMANOID, humanoid.transform);
 
-        public EPlayerState ToggleState (EPlayerState newState, Transform transform) {
+        EPlayerState ToggleState (EPlayerState newState, Transform transform) {
+            Debug.Log($"{newState} : {transform.position}");
             bool bSquid = newState == EPlayerState.SQUID;
             squid.gameObject.SetActive (bSquid);
             humanoid.gameObject.SetActive (!bSquid);
+            humanoidCam.Priority = bSquid?10 : 11;
+            squidCam.Priority = bSquid?11 : 10;
             State = newState;
             DomainEvents.Raise (new OnStateChanged (State, transform));
             return State;
@@ -46,11 +54,11 @@ namespace CJStudio.Splash {
 
     class Component {
         protected Transform parent = null;
-        protected PlayerComponent player = null;
+        protected Character character = null;
         public virtual void Tick ( ) { }
-        public Component (PlayerComponent player) {
-            this.parent = player.transform;
-            this.player = player;
+        public Component (Character character) {
+            this.parent = character.transform;
+            this.character = character;
         }
     }
 

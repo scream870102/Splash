@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 namespace CJStudio.Splash {
-    class Squid : PlayerComponent {
+    class Squid : Character {
         [SerializeField] SquidMovementAttribute movementAttribute = null;
         SquidMovement movement = null;
         public Camera Camera { get; private set; } = null;
@@ -19,43 +19,54 @@ namespace CJStudio.Splash {
         }
 
         void Update ( ) {
-            movement.Tick ( );
+            if(Player.State==EPlayerState.SQUID)
+                movement.Tick ( );
+        }
+        override protected void OnEnable ( ) {
+            base.OnEnable ( );
+            Input.GamePlay.Enable ( );
+        }
+
+        protected override void OnDisable ( ) {
+            base.OnDisable ( );
+            Input.GamePlay.Disable ( );
         }
 
         override protected void HandleStateChanged (OnStateChanged e) {
             if (e.State != EPlayerState.SQUID)
                 return;
-            transform.position = e.Transform.position;
-            Vector3 rot = transform.rotation.eulerAngles;
-            rot.y = 180f + e.Transform.rotation.eulerAngles.y;
-            rot.x = -90f;
-            transform.rotation = Quaternion.Euler (rot);
+            transform.localPosition = e.Transform.localPosition;
+            // Vector3 rot = transform.rotation.eulerAngles;
+            // rot.y = 180f + e.Transform.rotation.eulerAngles.y;
+            // rot.x = -90f;
+            transform.rotation = Quaternion.Euler (0f, e.Transform.rotation.eulerAngles.y, 0f);
         }
     }
 
     class SquidMovement : Component {
-        new Squid player = null;
+        new Squid character = null;
         SquidMovementAttribute attr = null;
         Animator anim = null;
         Camera cam = null;
         CharacterController characterController = null;
         Vector2 moveDir = Vector2.zero;
         PlayerInputAction input = null;
-        public SquidMovement (SquidMovementAttribute attr, Squid player) : base (player) {
-            this.player = player;
+        public SquidMovement (SquidMovementAttribute attr, Squid character) : base (character) {
+            this.character = character;
             this.attr = attr;
-            cam = player.Camera;
-            input = player.Input;
-            characterController = player.CharacterController;
-            anim = player.Animator;
+            cam = character.Camera;
+            input = character.Input;
+            characterController = character.CharacterController;
+            anim = character.Animator;
 
-            input.GamePlay.Move.performed += OnMovePerformed;
-            input.GamePlay.Move.canceled += OnMoveCanceled;
+            input.GamePlay.Move.performed += HandleMovePerformed;
+            input.GamePlay.Move.canceled += HandleMoveCanceled;
+
         }
 
         ~SquidMovement ( ) {
-            input.GamePlay.Move.performed -= OnMovePerformed;
-            input.GamePlay.Move.canceled -= OnMoveCanceled;
+            input.GamePlay.Move.performed -= HandleMovePerformed;
+            input.GamePlay.Move.canceled -= HandleMoveCanceled;
         }
 
         public override void Tick ( ) {
@@ -63,11 +74,11 @@ namespace CJStudio.Splash {
                 Move ( );
         }
 
-        void OnMovePerformed (InputAction.CallbackContext c) {
+        void HandleMovePerformed (InputAction.CallbackContext c) {
             moveDir = c.ReadValue<Vector2> ( );
         }
 
-        void OnMoveCanceled (InputAction.CallbackContext c) {
+        void HandleMoveCanceled (InputAction.CallbackContext c) {
             anim?.SetFloat ("Velocity", 0f);
             moveDir = Vector2.zero;
         }
@@ -89,6 +100,7 @@ namespace CJStudio.Splash {
         }
     }
 
+    [System.Serializable]
     class SquidMovementAttribute {
         [SerializeField] float speed = 3f;
         [SerializeField] float rotationSpeed = 5f;

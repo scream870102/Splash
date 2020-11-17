@@ -3,11 +3,10 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 namespace CJStudio.Splash {
-    class Humanoid : PlayerComponent {
+    class Humanoid : Character {
         [SerializeField] HumanoidMovementAttribute movementAttribute = null;
         [SerializeField] HumanoidAimAttribute aimAttribute = null;
         [SerializeField] Transform crosshair = null;
-        [SerializeField] CinemachineFreeLook freeCam = null;
         HumanoidMovement movement = null;
         HumanoidAim aim = null;
         Weapon weapon = null;
@@ -17,7 +16,7 @@ namespace CJStudio.Splash {
         public PlayerInputAction Input { get; private set; } = null;
         public EHumanoidState State { get; private set; } = EHumanoidState.MOVE;
         public Transform Crosshair => crosshair;
-        public CinemachineFreeLook FreeCam => freeCam;
+        public CinemachineFreeLook FreeCam => Player.HumanoidCam;
 
         void Awake ( ) {
             this.Camera = Camera.main;
@@ -34,23 +33,25 @@ namespace CJStudio.Splash {
         }
 
         void Update ( ) {
-            movement.Tick ( );
-            aim.Tick ( );
+            if (Player.State == EPlayerState.HUMANOID) {
+                movement.Tick ( );
+                aim.Tick ( );
+            }
         }
 
-        protected override void OnEnable ( ) {
+        override protected void OnEnable ( ) {
             base.OnEnable ( );
             Input.GamePlay.Enable ( );
             weapon.enabled = true;
         }
 
-        protected override void OnDisable ( ) {
+        override protected void OnDisable ( ) {
             base.OnDisable ( );
             Input.GamePlay.Disable ( );
             weapon.enabled = false;
         }
 
-        public async UniTask LookAtCrosshairAsync ( ) {
+        async public UniTask LookAtCrosshairAsync ( ) {
             await aim.LookAtCrosshairAsync ( );
         }
         public void LookAtCrosshair ( ) {
@@ -67,8 +68,9 @@ namespace CJStudio.Splash {
         override protected void HandleStateChanged (OnStateChanged e) {
             if (e.State != EPlayerState.HUMANOID)
                 return;
-            transform.position = e.Transform.position;
-            transform.rotation = Quaternion.Euler (0f, 180f+e.Transform.rotation.eulerAngles.y, 0f);
+            transform.localPosition = e.Transform.localPosition;
+            //transform.rotation = Quaternion.Euler (0f, 180f + e.Transform.rotation.eulerAngles.y, 0f);
+            transform.rotation = Quaternion.Euler (0f, e.Transform.rotation.eulerAngles.y, 0f);
         }
     }
 
@@ -79,14 +81,14 @@ namespace CJStudio.Splash {
         CharacterController characterController = null;
         Vector2 moveDir = Vector2.zero;
         PlayerInputAction input = null;
-        new Humanoid player = null;
-        public HumanoidMovement (HumanoidMovementAttribute attribute, Humanoid player) : base (player) {
+        new Humanoid character = null;
+        public HumanoidMovement (HumanoidMovementAttribute attribute, Humanoid character) : base (character) {
             attr = attribute;
-            cam = player.Camera;
-            input = player.Input;
-            characterController = player.CharacterController;
-            anim = player.Animator;
-            this.player = player;
+            cam = character.Camera;
+            input = character.Input;
+            characterController = character.CharacterController;
+            anim = character.Animator;
+            this.character = character;
 
             input.GamePlay.Move.performed += OnMovePerformed;
             input.GamePlay.Move.canceled += OnMoveCanceled;
@@ -122,28 +124,27 @@ namespace CJStudio.Splash {
 
             // if player is shooting don't change rotation
             // cause player should face to the Crosshair not move direction
-            if (player.State != EHumanoidState.SHOOT_START) {
+            if (character.State != EHumanoidState.SHOOT_START) {
                 parent.rotation = Quaternion.Slerp (parent.rotation, Quaternion.LookRotation (move), Time.deltaTime * attr.RotationSpeed);
-                player.ChangeState (EHumanoidState.MOVE);
+                character.ChangeState (EHumanoidState.MOVE);
             }
-
             characterController.Move (move * attr.Speed * Time.deltaTime);
             anim.SetFloat ("Velocity", moveDir.magnitude);
         }
     }
 
     class HumanoidAim : Component {
-        new Humanoid player = null;
+        new Humanoid character = null;
         HumanoidAimAttribute attr = null;
         PlayerInputAction input = null;
         Cinemachine.CinemachineFreeLook freeCam = null;
-        public HumanoidAim (HumanoidAimAttribute attribute, Humanoid player) : base (player) {
-            input = player.Input;
-            freeCam = player.FreeCam;
+        public HumanoidAim (HumanoidAimAttribute attribute, Humanoid character) : base (character) {
+            input = character.Input;
+            freeCam = character.FreeCam;
             input.GamePlay.Aim.performed += OnAimPerformed;
             input.GamePlay.Aim.canceled += OnAimCanceled;
             attr = attribute;
-            this.player = player;
+            this.character = character;
         }
 
         ~HumanoidAim ( ) {
@@ -164,7 +165,7 @@ namespace CJStudio.Splash {
         }
 
         public async UniTask LookAtCrosshairAsync ( ) {
-            Vector3 lookAt = (player.Crosshair.position - parent.position).normalized;
+            Vector3 lookAt = (character.Crosshair.position - parent.position).normalized;
             lookAt.y = 0f;
             Quaternion lookRotation = Quaternion.LookRotation (lookAt);
             while (Quaternion.Angle (parent.rotation, lookRotation) > 0f) {
@@ -178,7 +179,7 @@ namespace CJStudio.Splash {
         }
 
         public void LookAtCrosshair ( ) {
-            Vector3 lookAt = player.Crosshair.position;
+            Vector3 lookAt = character.Crosshair.position;
             lookAt.y = 0f;
             parent.LookAt (lookAt);
         }
