@@ -51,6 +51,14 @@ namespace CJStudio.Splash
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Reset"",
+                    ""type"": ""Button"",
+                    ""id"": ""962c9ee4-ad9a-4457-924d-391c74310bd8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -130,6 +138,17 @@ namespace CJStudio.Splash
                     ""action"": ""Transform"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""54ae74d2-8f34-4ddb-b12e-8680ea8eeb41"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -142,6 +161,7 @@ namespace CJStudio.Splash
             m_GamePlay_Move = m_GamePlay.FindAction("Move", throwIfNotFound: true);
             m_GamePlay_Aim = m_GamePlay.FindAction("Aim", throwIfNotFound: true);
             m_GamePlay_Transform = m_GamePlay.FindAction("Transform", throwIfNotFound: true);
+            m_GamePlay_Reset = m_GamePlay.FindAction("Reset", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -195,6 +215,7 @@ namespace CJStudio.Splash
         private readonly InputAction m_GamePlay_Move;
         private readonly InputAction m_GamePlay_Aim;
         private readonly InputAction m_GamePlay_Transform;
+        private readonly InputAction m_GamePlay_Reset;
         public struct GamePlayActions
         {
             private @PlayerInputAction m_Wrapper;
@@ -203,6 +224,7 @@ namespace CJStudio.Splash
             public InputAction @Move => m_Wrapper.m_GamePlay_Move;
             public InputAction @Aim => m_Wrapper.m_GamePlay_Aim;
             public InputAction @Transform => m_Wrapper.m_GamePlay_Transform;
+            public InputAction @Reset => m_Wrapper.m_GamePlay_Reset;
             public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -224,6 +246,9 @@ namespace CJStudio.Splash
                     @Transform.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnTransform;
                     @Transform.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnTransform;
                     @Transform.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnTransform;
+                    @Reset.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnReset;
+                    @Reset.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnReset;
+                    @Reset.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnReset;
                 }
                 m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
                 if (instance != null)
@@ -240,6 +265,9 @@ namespace CJStudio.Splash
                     @Transform.started += instance.OnTransform;
                     @Transform.performed += instance.OnTransform;
                     @Transform.canceled += instance.OnTransform;
+                    @Reset.started += instance.OnReset;
+                    @Reset.performed += instance.OnReset;
+                    @Reset.canceled += instance.OnReset;
                 }
             }
         }
@@ -250,6 +278,7 @@ namespace CJStudio.Splash
             void OnMove(InputAction.CallbackContext context);
             void OnAim(InputAction.CallbackContext context);
             void OnTransform(InputAction.CallbackContext context);
+            void OnReset(InputAction.CallbackContext context);
         }
     }
 }
